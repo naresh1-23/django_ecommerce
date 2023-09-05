@@ -1,0 +1,45 @@
+{% extends "include.html" %}{% block content %}
+<div class="login-form">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="title"><h1>Add Product</h1></div>
+    <div class="username">
+      <input type="text" name="name" placeholder="Enter Product name" />
+    </div>
+    <div class="username">
+      <textarea
+        style="
+          height: 200px;
+          width: 75%;
+          border-radius: 15px;
+          margin: 15px;
+          border: 1px solid #d4d4d4;
+          font-size: 15px;
+          padding: 10px;
+        "
+        name="description"
+        placeholder="Enter Product description"
+      ></textarea>
+    </div>
+    <div class="username">
+      <input type="text" name="price" placeholder="Enter Price" />
+    </div>
+    <div class="username">
+      <input type="number" name="quantity" placeholder="Enter quantity" />
+    </div>
+    <div class="username">
+      <input type="file" id="file-input" name="product_image" />
+    </div>
+    <div class="username">
+      <input list="categories" placeholder="Select Category" name="category" />
+      <datalist id="categories">
+        {% for x in category %}
+        <option value="{{x.name}}">{% endfor %}</option>
+      </datalist>
+    </div>
+    <div class="submit">
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

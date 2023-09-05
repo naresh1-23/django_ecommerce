@@ -1,0 +1,70 @@
+.navbar {
+  height: 60px;
+  width: 101%;
+  background: rgb(255, 255, 255);
+  display: grid;
+  margin-top: -8px;
+  margin-left: -8px;
+  padding-top: 10px;
+  grid-template-columns: auto auto;
+  box-shadow: 10px 8px 10px #888888;
+  overflow-y: hidden;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-right: 25px;
+}
+.option div {
+  padding: 15px;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.option div:hover {
+  background-color: #d8d8d8;
+  cursor: pointer;
+}
+.search input {
+  border-radius: 10px;
+  height: 20px;
+  padding: 15px;
+}
+.search button,
+.login-form button {
+  text-align: center;
+  cursor: pointer;
+  height: 30px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+}
+.login-form {
+  margin-left: 25%;
+  width: 45%;
+  margin-top: 50px;
+  text-align: center;
+  border: 0px solid black;
+  box-shadow: 10px 8px 10px #888888;
+  padding: 25px;
+}
+.login-form input {
+  width: 75%;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 15px;
+  border: 1px solid #d4d4d4;
+}
+
+#file-input {
+  display: none;
+}
+
+#file-input-label {
+  font-size: 1.3em;
+  padding: 10px 15px;
+  border: 1px solid black;
+  border-radius: 4%;
+}
