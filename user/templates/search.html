@@ -1,8 +1,10 @@
-{% extends 'include.html' %} {% block content %}
+{% extends 'include.html' %}{% block content %}
 <div class="products">
-  <h1 style="margin-left: 10%">Products</h1>
+  <h1 style="margin-left: 10%">Search result for {{ query }}</h1>
   <div class="productlist">
-    {% for product in products %}
+    {% if length_products == 0 %}
+    <div><h1>Result doesn't found</h1></div>
+    {% else %} {% for product in products %}
     <div class="produsts">
       <a style="text-decoration: none; color: black; cursor: pointer">
         <img
@@ -14,8 +16,7 @@
       <p class="product-title">{{ product.product_name }}</p>
       <p class="product-price">Rs. {{product.price}}</p>
     </div>
-    {% endfor %}
+    {% endfor %} {% endif %}
   </div>
 </div>
-
 {% endblock %}

@@ -5,7 +5,8 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    products = Product.objects.all()
+    return render(request, 'home.html', {'products': products})
 
 def add_product(request):
     if request.user.is_superuser:

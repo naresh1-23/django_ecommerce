@@ -4,7 +4,7 @@ from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
-
+from product.models import Product, Category
 
 def loginView(request):
     if request.user.is_authenticated:
@@ -53,6 +53,13 @@ def SignupView(request):
         return render(request, 'signup.html')
     else:
         return render(request, "signup.html")
+    
+def search(request):
+    query = request.GET['query'] 
+    category_obj = Category.objects.filter(name = query.capitalize()).first()
+    products = Product.objects.filter(product_name__icontains = query) | Product.objects.filter(category = category_obj)
+    length_products = len(products)
+    return render(request, 'search.html', {'query': query, 'products': products, "length_products":length_products})   
     
 @login_required            
 def logoutView(request):

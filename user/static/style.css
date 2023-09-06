@@ -30,6 +30,7 @@
   border-radius: 10px;
   height: 20px;
   padding: 15px;
+  margin-left: 15px;
 }
 .search button,
 .login-form button {
@@ -58,13 +59,27 @@
   border: 1px solid #d4d4d4;
 }
 
-#file-input {
-  display: none;
+.productlist {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  padding: 25px;
 }
-
-#file-input-label {
-  font-size: 1.3em;
-  padding: 10px 15px;
-  border: 1px solid black;
-  border-radius: 4%;
+.produsts:hover {
+  background-color: #d4d4d4;
+  border-radius: 25px;
+  box-shadow: 10px 8px 10px #888888;
+}
+.produsts {
+  margin-bottom: 25px;
+}
+.product-title {
+  font-weight: 200;
+}
+.product-price {
+  font-weight: bold;
+}
+.product-image {
+  height: 250px;
+  width: 250px;
 }
