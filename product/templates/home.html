@@ -4,7 +4,10 @@
   <div class="productlist">
     {% for product in products %}
     <div class="produsts">
-      <a style="text-decoration: none; color: black; cursor: pointer">
+      <a
+        href="{% url 'product' product.id %}"
+        style="text-decoration: none; color: black; cursor: pointer"
+      >
         <img
           class="product-image"
           src="{{product.product_img.url}}"

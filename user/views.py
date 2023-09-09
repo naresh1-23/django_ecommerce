@@ -4,7 +4,7 @@ from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
-from product.models import Product, Category
+from product.models import Product, Category, Order
 
 def loginView(request):
     if request.user.is_authenticated:
@@ -67,3 +67,9 @@ def logoutView(request):
     messages.success(request, "Logout successfully")
     return redirect('login')
     
+def delivered_view(request, pk):
+    if request.user.is_superuser:
+        order = Order.objects.filter(id = pk).first()
+        order.delete()
+        return redirect('admin-order')
+    return redirect('order')

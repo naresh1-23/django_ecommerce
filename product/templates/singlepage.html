@@ -1,0 +1,92 @@
+{% extends 'include.html' %}{% block content %}
+<div
+  class="product_info"
+  style="margin-top: 35px; display: grid; grid-template-columns: auto auto"
+>
+  <div class="product_picture" style="margin: 25px">
+    <img
+      style="width: 500px; height: 500px"
+      src="{{ data.product_img.url }}"
+      alt="product image"
+    />
+  </div>
+  <div class="product_detail" style="padding: 35px">
+    <h2 style="font-size: 30px">{{ data.product_name }}</h2>
+    <div class="description">
+      <ul>
+        {% for detail in description_new %} {% if detail %}
+        <li style="font-size: 20px">{{ detail }}</li>
+        {% endif %} {% endfor %}
+      </ul>
+      <h3>Rs. {{ data.price }}</h3>
+    </div>
+    {% if user.is_authenticated %}
+
+    <form method="POST">
+      {% csrf_token %} {% if data.quantity == 0 %}<button
+        id="desc"
+        disabled
+        type="button"
+        style="width: 50px; height: 50px; font-size: 25px"
+      >
+        -</button
+      ><input
+        value="Sold out"
+        readonly
+        style="width: 100px; height: 50px; font-size: 25px; text-align: center"
+      /><button
+        disabled
+        id="inc"
+        type="button"
+        style="width: 50px; height: 50px; font-size: 25px"
+      >
+        +</button
+      ><br />{% else %}<button
+        id="desc"
+        type="button"
+        style="width: 50px; height: 50px; font-size: 25px"
+      >
+        -</button
+      ><input
+        name="quantity"
+        id="maindata"
+        readonly
+        style="width: 50px; height: 50px; font-size: 25px; text-align: center"
+      /><button
+        id="inc"
+        type="button"
+        style="width: 50px; height: 50px; font-size: 25px"
+      >
+        +</button
+      ><br /><button
+        style="margin-top: 20px; width: 100px; height: 50px"
+        type="submit"
+      >
+        Add To Cart
+      </button>
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
+</div>
+<script>
+    const quantity = {{data.quantity}};
+  const increasebtn = document.getElementById("inc");
+  const decreasebtn = document.getElementById("desc");
+  const input_box = document.getElementById("maindata");
+  let num = 1;
+  input_box.value = num;
+  increasebtn.onclick = () => {
+    if(num < quantity){
+        num = num+1;
+        input_box.value = num;
+    }
+  }
+  decreasebtn.onclick = () => {
+    if(num  > 1){
+        num = num-1;
+        input_box.value = num;
+    }
+  }
+</script>
+{% endblock %}

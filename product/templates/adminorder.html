@@ -1,0 +1,50 @@
+{% extends 'include.html' %}{% block content %}
+<div class="cart-main" style="margin-top: 35px">
+  {% for data in datas %}
+  <div
+    class="singlecart"
+    style="
+      display: grid;
+      grid-template-columns: auto auto;
+      border: 1px solid black;
+      box-shadow: 10px 8px 10px #888888;
+      margin-bottom: 35px;
+      padding: 25px;
+    "
+  >
+    <div class="cart-image" style="">
+      <img
+        src="{{data.product_id.product_img.url}}"
+        style="width: 150px; height: 200px"
+        alt="cart product image"
+      />
+    </div>
+    <div class="cart-detail" style="width: 500px">
+      <h3>{{ data.product_id.product_name }}</h3>
+      <p>Rs. {% widthratio data.product_id.price 1 data.quantity %}</p>
+      <p>Quantity: {{ data.quantity }}</p>
+      <p>Order placed by {{ data.user_id.username }}</p>
+      <p>Phone number: {{ data.user_id.contact }}</p>
+      <a href="{% url 'delivered' data.id %}" style="text-decoration: none"
+        ><button
+          type="submit"
+          style="
+            background-color: #ffc436;
+            border-radius: 15px;
+            height: 50px;
+            width: 120px;
+            border: none;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            margin-right: 25px;
+          "
+        >
+          Delivered?
+        </button></a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

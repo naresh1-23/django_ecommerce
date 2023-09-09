@@ -1,0 +1,64 @@
+{% extends 'include.html' %}{% block content %}
+<div class="cart-main" style="margin-top: 35px">
+  {% for data in datas %}
+  <div
+    class="singlecart"
+    style="
+      display: grid;
+      grid-template-columns: auto auto;
+      border: 1px solid black;
+      box-shadow: 10px 8px 10px #888888;
+      margin-bottom: 35px;
+      padding: 25px;
+    "
+  >
+    <div class="cart-image" style="">
+      <img
+        src="{{data.product.product_img.url}}"
+        style="width: 150px; height: 200px"
+        alt="cart product image"
+      />
+    </div>
+    <div class="cart-detail" style="width: 500px">
+      <h3>{{ data.product.product_name }}</h3>
+      <p>Rs. {% widthratio data.product.price 1 data.quantity %}</p>
+      <p>Quantity: {{ data.quantity }}</p>
+      <div class="delete-button">
+        <a href = "{% url 'order-cart' data.id %}" style = "text-decoration: none;"><button
+          
+          type="submit"
+          style="
+            background-color: #FFC436;
+            border-radius: 15px;
+            height: 50px;
+            width: 120px;
+            border: none;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            margin-right: 25px
+          "
+        >
+          Order now
+        </button></a><a href = "{% url "delete-cart" data.id %}" style = "text-decoration: none;"><button
+          
+          type="submit"
+          style="
+            background-color: red;
+            border-radius: 15px;
+            height: 50px;
+            width: 120px;
+            border: none;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          Delete
+        </button></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

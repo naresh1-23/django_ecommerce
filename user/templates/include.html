@@ -6,28 +6,47 @@
   </head>
   <body>
     <div class="navbar">
-      <div class="search">
-        <form method="GET" action="{% url 'search' %}">
-          <input name="query" type="search" placeholder="Search" />
-          <button type="submit">Search</button>
-        </form>
+      <div
+        class="search"
+        style="display: grid; grid-template-columns: auto auto"
+      >
+        <div>
+          <form method="GET" action="{% url 'search' %}">
+            <input name="query" type="search" placeholder="Search" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
       </div>
-      <div class="option">
+      <div class="option" style="margin-left: 50px">
         <a
           href="{% url 'home' %}"
           style="text-decoration: none; font-size: 20px"
-          ><div>Home</div></a
-        >{% if user.is_authenticated%}{% if user.is_superuser %}<a
+          ><div id="home-btn">Home</div></a
+        >
+        {% if user.is_authenticated%}{% if user.is_superuser %}<a
           href="{% url 'add-product' %}"
           style="text-decoration: none; font-size: 20px"
           ><div>Add product</div></a
+        ><a
+          href="{% url 'admin-order' %}"
+          style="text-decoration: none; font-size: 20px"
+          ><div>Order</div></a
         ><a
           href="{% url 'logout' %}"
           style="text-decoration: none; font-size: 20px"
           ><div>logout</div></a
         >
         {% else %}
-        <a style="text-decoration: none; font-size: 20px"><div>Cart</div></a>
+        <a
+          href="{% url 'cart' %}"
+          style="text-decoration: none; font-size: 20px"
+          ><div>Cart</div></a
+        >
+        <a
+          href="{% url 'order' %}"
+          style="text-decoration: none; font-size: 20px"
+          ><div>Order</div></a
+        >
         <a
           href="{% url 'logout' %}"
           style="text-decoration: none; font-size: 20px"
