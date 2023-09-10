@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Category, Cart, Product, Order
 from django.contrib import messages
 
-
+Naresh tamang
 # Create your views here.
 def home(request):
     products = Product.objects.all()
